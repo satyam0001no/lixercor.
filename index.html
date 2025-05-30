@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lixercor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <style>
+    :root {
+      --luxury-gold: #d4af37;
+      --deep-charcoal: #1a1a1a;
+      --elegant-cream: #f9f5f0;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: var(--deep-charcoal);
+      color: var(--elegant-cream);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+    }
+    header {
+      background-color: var(--deep-charcoal);
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid var(--luxury-gold);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--luxury-gold);
+    }
+    nav a {
+      color: var(--elegant-cream);
+      margin-left: 1.2rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: var(--luxury-gold);
+    }
+    .hero {
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      color: var(--luxury-gold);
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 2rem;
+      background-color: var(--luxury-gold);
+      color: #000;
+      padding: 0.75rem 1.5rem;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .btn:hover {
+      background-color: #b8982d;
+    }
+    .payment-section {
+      text-align: center;
+      margin-top: 3rem;
+    }
+    #qrcode {
+      margin: 1.5rem auto;
+    }
+    .upi-id {
+      font-size: 1rem;
+      color: var(--luxury-gold);
+      background: rgba(255,255,255,0.05);
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+    }
+    footer {
+      padding: 2rem;
+      text-align: center;
+      background-color: #111;
+      font-size: 0.9rem;
+    }
+    .social-link {
+      color: var(--luxury-gold);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Lixercor</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#products">Products</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Luxury Psychology for the Modern Mind</h1>
+    <p>Unlock your mind's potential with Lixercor's curated digital products designed to elevate your thinking and lifestyle.</p>
+    <a class="btn" href="#payment">Explore Now - ₹49</a>
+  </section>
+
+  <section class="payment-section" id="payment">
+    <h2>Pay Securely via UPI</h2>
+    <div id="qrcode"></div>
+    <p class="upi-id">Pay to: <strong>pay@lixercor.xyz</strong></p>
+  </section>
+
+  <footer>
+    <p>Follow us on <a class="social-link" href="https://www.instagram.com/lixercor" target="_blank">Instagram</a> | Contact: <a class="social-link" href="mailto:lixercor@gmail.com">lixercor@gmail.com</a></p>
+  </footer>
+
+  <script>
+    const upiId = '7520221141@ptsbi';
+    const name = 'Lixercor';
+    const amount = '49';
+    const txnRef = 'LXC' + Math.floor(Math.random() * 10000000);
+    const upiUrl = `upi://pay?pa=${upiId}&pn=${name}&am=${amount}&cu=INR&tn=${txnRef}`;
+
+    new QRCode(document.getElementById("qrcode"), {
+      text: upiUrl,
+      width: 200,
+      height: 200,
+      colorDark: "#000000",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.H
+    });
+  </script>
+</body>
+</html>
